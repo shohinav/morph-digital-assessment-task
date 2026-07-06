@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f5f5f7;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 1.6;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ─── Hero ─── */
+.hero {
+  position: relative;
+  background: linear-gradient(160deg, #0a1628 0%, #0d2847 40%, #0f3460 100%);
+  padding: 100px 20px 80px;
+  text-align: center;
+  overflow: hidden;
+}
+.hero-glow {
+  position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 400px;
+  background: radial-gradient(ellipse, rgba(8,112,211,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+.hero-badge { display: inline-block; padding: 6px 16px; border-radius: 20px; background: rgba(8,112,211,0.15); color: #5ba3e6; font-size: 13px; font-weight: 500; margin-bottom: 24px; border: 1px solid rgba(8,112,211,0.2); }
+.hero-title { font-size: 56px; font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; color: white; margin: 0 0 20px; }
+.hero-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.65); margin: 0 0 36px; max-width: 540px; margin-left: auto; margin-right: auto; }
+.hero-cta { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: 28px; background: #0870d3; color: white; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; border: none; }
+.hero-cta:hover { background: #0660b5; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(8,112,211,0.3); }
+
+/* ─── Context ─── */
+.context { padding: 80px 20px; background: white; }
+.context-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+.context-label { font-size: 13px; font-weight: 600; color: #0870d3; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+.context-title { font-size: 28px; font-weight: 700; line-height: 1.35; color: rgba(0,0,0,0.9); margin: 0 0 20px; }
+.context-desc { font-size: 16px; line-height: 1.75; color: rgba(0,0,0,0.55); max-width: 640px; margin: 0 auto; }
+
+/* ─── Infographic ─── */
+.infographic-section { padding-bottom: 80px; background: #f5f5f7; }
+.infographic-inner { max-width: 1440px; margin: 0 auto; }
+
+/* ─── After Cards ─── */
+.after-section { padding: 80px 20px; background: white; }
+.after-inner { max-width: 1440px; margin: 0 auto; }
+.after-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.after-card { padding: 32px; border-radius: 12px; background: #f8f9fb; border: 1px solid rgba(0,0,0,0.06); transition: all 0.3s ease; }
+.after-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+.after-card-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(8,112,211,0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.after-card-title { font-size: 18px; font-weight: 700; color: rgba(0,0,0,0.9); margin: 0 0 8px; }
+.after-card-desc { font-size: 14px; line-height: 1.65; color: rgba(0,0,0,0.55); margin: 0; }
+
+/* ─── Quote ─── */
+.quote-section { padding: 80px 20px; background: #f8f9fb; }
+.quote-inner { max-width: 700px; margin: 0 auto; }
+.quote-text { font-size: 22px; font-weight: 500; line-height: 1.55; color: rgba(0,0,0,0.75); font-style: italic; margin: 0 0 24px; border-left: 3px solid #0870d3; padding-left: 24px; }
+.quote-author { padding-left: 24px; }
+.quote-author-name { font-size: 15px; font-weight: 600; color: rgba(0,0,0,0.85); }
+.quote-author-title { font-size: 13px; color: rgba(0,0,0,0.45); margin-top: 2px; }
+
+/* ─── Footer ─── */
+.site-footer { padding: 24px 20px; background: white; border-top: 1px solid rgba(0,0,0,0.06); }
+.footer-inner { max-width: 1060px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.footer-left { display: flex; align-items: center; gap: 16px; }
+.footer-brand { font-size: 14px; font-weight: 600; color: rgba(0,0,0,0.8); }
+.footer-copy { font-size: 12px; color: rgba(0,0,0,0.4); }
+.footer-embed { font-size: 11px; background: rgba(0,0,0,0.04); padding: 4px 10px; border-radius: 4px; color: rgba(0,0,0,0.5); font-family: monospace; }
+
+@media (max-width: 767px) {
+  .hero { padding: 60px 16px 50px; }
+  .hero-title { font-size: 32px; }
+  .hero-subtitle { font-size: 15px; }
+  .context { padding: 50px 16px; }
+  .context-title { font-size: 22px; }
+  .context-desc { font-size: 14px; }
+  .after-grid { grid-template-columns: 1fr; gap: 16px; }
+  .after-card { padding: 24px; }
+  .quote-text { font-size: 18px; }
+  .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+  .footer-left { flex-direction: column; gap: 4px; }
+}

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browser Journey — Interactive Infographic</title>
+    <meta name="description" content="An interactive infographic that explains what happens when you type a URL into your browser." />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230870d3' stroke-width='2'><polygon points='13 2 3 14 12 14 11 22 21 10 12 10 13 2'/></svg>" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-inner">
+        <span class="hero-badge">Interactive Infographic</span>
+        <h1 class="hero-title">What Happens When You<br>Type a URL?</h1>
+        <p class="hero-subtitle">Follow the journey of a web request from keystroke to screen render. An interactive deep-dive into the invisible infrastructure that powers the web.</p>
+        <a href="#infographic" class="hero-cta">
+          Explore the Journey
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </a>
+      </div>
+      <div class="hero-glow"></div>
+    </section>
+
+    <!-- Context Section -->
+    <section class="context">
+      <div class="context-inner">
+        <div class="context-label">The Invisible Web</div>
+        <h2 class="context-title">Every time you visit a website, an intricate dance of protocols, servers, and data unfolds in milliseconds.</h2>
+        <p class="context-desc">From DNS lookups to CDN edge caching, from origin servers to browser rendering engines — the modern web is a marvel of distributed systems engineering. This infographic breaks down each step.</p>
+      </div>
+    </section>
+
+    <!-- Infographic Web Component -->
+    <section id="infographic" class="infographic-section">
+      <div class="infographic-inner">
+        <browser-journey></browser-journey>
+      </div>
+    </section>
+
+    <!-- Info Cards -->
+    <section class="after-section">
+      <div class="after-inner">
+        <div class="after-grid">
+          <div class="after-card">
+            <div class="after-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0870d3" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3 class="after-card-title">Speed Matters</h3>
+            <p class="after-card-desc">A 100ms delay in page load can reduce conversion rates by 7%. Understanding the pipeline helps optimize performance.</p>
+          </div>
+          <div class="after-card">
+            <div class="after-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0870d3" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="after-card-title">Security Layers</h3>
+            <p class="after-card-desc">HTTPS, CORS, CSP — multiple security mechanisms protect every request. Learn how they work together.</p>
+          </div>
+          <div class="after-card">
+            <div class="after-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0870d3" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h3 class="after-card-title">Real-World Impact</h3>
+            <p class="after-card-desc">CDNs serve 20% of all web traffic. DNS processes billions of queries daily. The scale is staggering.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote-section">
+      <div class="quote-inner">
+        <blockquote class="quote-text">The web is the most complex distributed system ever built, yet it feels instantaneous. Understanding its internals makes you a better developer.</blockquote>
+        <div class="quote-author">
+          <div class="quote-author-name">Tim Berners-Lee</div>
+          <div class="quote-author-title">Inventor of the World Wide Web</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <span class="footer-brand">Browser Journey</span>
+          <span class="footer-copy">Embeddable Web Component</span>
+        </div>
+        <div class="footer-right">
+          <code class="footer-embed">&lt;browser-journey&gt;&lt;/browser-journey&gt;</code>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
