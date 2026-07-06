@@ -133,9 +133,14 @@ class BrowserJourney extends HTMLElement {
 
     _togglePlay() {
         this._userPaused = !this._userPaused
-        this._ctrlPlay.textContent = this._userPaused ? 'Paused' : 'Playing'
-        this._ctrlPlay.classList.toggle('paused', this._userPaused)
+        this._updatePlayPause()
         if (!this._userPaused && !this._infoPaused) this._waiting = false
+    }
+
+    _updatePlayPause() {
+        const paused = this._userPaused || this._infoPaused
+        this._ctrlPlay.textContent = paused ? 'Paused' : 'Playing'
+        this._ctrlPlay.classList.toggle('paused', paused)
     }
 
     async _transitionScreen(screen) {
@@ -313,7 +318,7 @@ class BrowserJourney extends HTMLElement {
     _showDNSInfo(screen) {
         // Remove existing panel
         const existing = screen.querySelector('.dns-info-panel')
-        if (existing) { existing.remove(); this._infoPaused = false; return }
+        if (existing) { existing.remove(); this._infoPaused = false; this._updatePlayPause(); return }
 
         const panel = document.createElement('div')
         panel.className = 'dns-info-panel'
@@ -331,17 +336,19 @@ class BrowserJourney extends HTMLElement {
         gsap.fromTo(panel, { opacity: 0, y: 20, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: 'power2.out' })
 
         panel.querySelector('.info-panel-close').onclick = () => {
-            gsap.to(panel, { opacity: 0, y: 10, scale: 0.95, duration: 0.2, onComplete: () => { panel.remove(); this._infoPaused = false } })
+            gsap.to(panel, { opacity: 0, y: 10, scale: 0.95, duration: 0.2, onComplete: () => { panel.remove(); this._infoPaused = false; this._updatePlayPause() } })
         }
 
         this._infoPaused = true
+        this._updatePlayPause()
     }
 
     _showServerInfo(screen) {
         const existing = screen.querySelector('.server-info-panel')
-        if (existing) { existing.remove(); this._infoPaused = false; return }
+        if (existing) { existing.remove(); this._infoPaused = false; this._updatePlayPause(); return }
 
         this._infoPaused = true
+        this._updatePlayPause()
 
         const panel = document.createElement('div')
         panel.className = 'server-info-panel dns-info-panel'
@@ -358,7 +365,7 @@ class BrowserJourney extends HTMLElement {
         gsap.fromTo(panel, { opacity: 0, y: 20, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: 'power2.out' })
 
         panel.querySelector('.info-panel-close').onclick = () => {
-            gsap.to(panel, { opacity: 0, y: 10, scale: 0.95, duration: 0.2, onComplete: () => { panel.remove(); this._infoPaused = false } })
+            gsap.to(panel, { opacity: 0, y: 10, scale: 0.95, duration: 0.2, onComplete: () => { panel.remove(); this._infoPaused = false; this._updatePlayPause() } })
         }
     }
 
@@ -718,6 +725,10 @@ class BrowserJourney extends HTMLElement {
         border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.5);
         z-index: 100; pointer-events: auto;
       }
+    .server-info-panel {
+        top: 20%;
+        height: fit-content;
+      }
       .info-panel-title {
         font-size: 14px; font-weight: 700; color: #818cf8;
         margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;
@@ -817,7 +828,7 @@ class BrowserJourney extends HTMLElement {
         .launch { cursor: pointer; height: auto; min-height: 100vh; }
         .launch-title { font-size: 36px; }
         .browser-window { width: 95%; min-height: 400px; }
-        .browser-screen { min-height: 200px; height: 100%; padding: 16px; }
+        .browser-screen { padding: 16px; }
         .anim-server-cards { flex-direction: column; gap: 8px; }
         .anim-res-card { text-align: center; }
         .line-left, .line-right { display: none; }
